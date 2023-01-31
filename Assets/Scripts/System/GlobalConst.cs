@@ -5,7 +5,6 @@ namespace System
     public class GlobalConst 
     {
         [Header("Save")]
-        public const string QuestionAnswerKey = "QuestionAnswer";
         public const string BestPlayerNameKey = "BestPlayer";
         public const string NameKey = "Name";
         public const string SoundKey = "Sound";
@@ -21,7 +20,7 @@ namespace System
 
         [Header("Count mistake")]
         public const int CountMistake = 3;
-
+        public const int CountMistakeRandom = 5;
         public enum VariantAnswer
         {
             Unset = 0,

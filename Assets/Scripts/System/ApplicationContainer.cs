@@ -4,14 +4,9 @@ namespace System
     {
         private ResultGame m_resultGame = null;
         private EventHolder m_eventHolder = null;
-        private FileManager m_fileManager = null;
         public EventHolder EventHolder
         {
             get { return m_eventHolder; }
-        }
-        public FileManager FileManager
-        {
-            get { return m_fileManager; }
         }
         public ResultGame ResultGame
         {

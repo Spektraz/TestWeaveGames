@@ -34,12 +34,12 @@ namespace MainGame.Question
         private void InitializeRandomQuestion()
         {
             m_questionManager = new QuestionManager();
-            if (countRandom > 5)
+            if (countRandom > GlobalConst.CountMistakeRandom)
             {
                 SetQuestion(null);
                 return;
             }
-            var random = Random.Range(0, m_questionManager.CountItem());
+            var random = Random.Range(0, m_questionManager.CountItem()+1);
             SetQuestion(random);
         }
         private void InitializeQuestion()
@@ -61,12 +61,14 @@ namespace MainGame.Question
                 ApplicationContainer.Instance.EventHolder.OnFinishGame(false);
                 return;
             }
-            if (questionItem.IsUse)
+            if (questionItem.IsUse || ApplicationContainer.Instance.ResultGame.IsLast)
             {
                 countRandom++;
                 QuestionTypeShow();
                 return;
             }
+            if (questionItem.ID == m_questionManager.CountItem() + 1)
+                ApplicationContainer.Instance.ResultGame.IsLast = true;
             m_viewModel.MainQuestion.text = questionItem.Question;
             m_viewModel.FirstAnswer.text = questionItem.AnswerFirst;
             m_viewModel.SecondAnswer.text = questionItem.AnswerSecond;
@@ -132,6 +134,8 @@ namespace MainGame.Question
 
         private void DisposeQuestion()
         {
+            ApplicationContainer.Instance.ResultGame.IsLast = false;
+            ApplicationContainer.Instance.ResultGame.IsSave = false;
             m_questionManager = new QuestionManager();
             m_questionManager.ResetIsUse();
         }

@@ -7,7 +7,6 @@ namespace MainGame.Question
     public class QuestionManager
     {
         private Dictionary<int, QuestionItem> m_itemsCache = new Dictionary<int, QuestionItem>();
-        private int m_countItems = 0;
         public QuestionItem TryGetItem(int id, bool useCache = true)
         {
             if (useCache && m_itemsCache.ContainsKey(id))
@@ -24,8 +23,11 @@ namespace MainGame.Question
                     return null;
                 if (customQuestion.ID != id)
                     return item;
-                if(m_itemsCache.Count < id)
+                if (!ApplicationContainer.Instance.ResultGame.IsSave)
+                {
+                    ApplicationContainer.Instance.ResultGame.IsSave = true;
                     m_itemsCache.Add(id, customQuestion);
+                }
                 if (customQuestion != null)
                     return customQuestion;
             }
