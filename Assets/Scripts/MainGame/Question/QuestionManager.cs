@@ -24,14 +24,15 @@ namespace MainGame.Question
                     return null;
                 if (customQuestion.ID != id)
                     return item;
-                m_itemsCache.Add(id, customQuestion);
+                if(m_itemsCache.Count < id)
+                    m_itemsCache.Add(id, customQuestion);
                 if (customQuestion != null)
                     return customQuestion;
             }
             return item;
         }
 
-        public void ResetIsUse(bool useCache = true)
+        public void ResetIsUse()
         {
             CountItem();
             foreach (var var in m_itemsCache)

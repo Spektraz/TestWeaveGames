@@ -10,7 +10,8 @@ namespace MainGame.Question
         private int m_winNumberAnswer = 0;
         private int m_looseAnswer = 0;
         private int m_winAnswer = 0;
-        private int counterQuestion;
+        private int counterQuestion = 0;
+        private int countRandom = 0;
         public QuestionController(QuestionModel viewModel)
         {
             m_viewModel = viewModel;
@@ -33,6 +34,11 @@ namespace MainGame.Question
         private void InitializeRandomQuestion()
         {
             m_questionManager = new QuestionManager();
+            if (countRandom > 5)
+            {
+                SetQuestion(null);
+                return;
+            }
             var random = Random.Range(0, m_questionManager.CountItem());
             SetQuestion(random);
         }
@@ -57,6 +63,7 @@ namespace MainGame.Question
             }
             if (questionItem.IsUse)
             {
+                countRandom++;
                 QuestionTypeShow();
                 return;
             }
@@ -67,6 +74,7 @@ namespace MainGame.Question
             m_viewModel.FourthAnswer.text = questionItem.AnswerFouth;
             m_winNumberAnswer = questionItem.WinAnswer;
             SetCountAnswers();
+            countRandom = 0;
             questionItem.IsUse = true;
         }
         private void InitializeButtons()
