@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bbca1051da399c48b65b489f3084538, type: 3}
+  m_Name: item_0
+  m_EditorClassIdentifier: 
+  m_id: 0
+  m_winAnswer: 3
+  m_questionKey: "\u0421\u043A\u043E\u043B\u044C\u043A\u043E \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442
+    \u0440\u0430\u0441 \u0432 World of Warcraft"
+  m_answerFirst: 4
+  m_answerSecond: 9
+  m_answerThird: 16
+  m_answerFouth: 26
